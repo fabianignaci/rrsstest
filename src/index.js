@@ -3,11 +3,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 //CSS
-import "./index.css";
 import "bootstrap/dist/css/bootstrap.css";
 
 //Component
-import App from "./App";
+import App from "./routes/App";
 // import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<App />, document.getElementById("root"));
