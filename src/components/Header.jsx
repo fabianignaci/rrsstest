@@ -1,13 +1,17 @@
+//React
 import React from "react";
+
+//Assets
 import instaLogo from "../assets/static/insta-logo.png";
+import "../assets/styles/Header.css";
 
 const Header = () => (
-  <header>
-    <div className='container-fluir bg-dark text-white d-flex align-items-center'>
-      <a className='mx-auto text-decoration-none'>
+  <header className='container-fluid bg-custom'>
+    <div className='text-white d-flex'>
+      <div className='mx-auto'>
         <img src={instaLogo} alt='' />
         <strong>InstaPet</strong>
-      </a>
+      </div>
     </div>
   </header>
 );
