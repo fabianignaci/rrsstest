@@ -24,11 +24,9 @@ const Header = props => {
                 type='search'
                 placeholder='Search by tag'
                 aria-label='Search'
-                onKeyPress={tagFinder}
               />
             </form>
           </div>
-          q
         </div>
       </div>
     </nav>
