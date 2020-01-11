@@ -6,9 +6,20 @@
 }
 .lds-default div {
   position: absolute;
-  width: 6px;
-  height: 6px;
-  background: rgb(69, 152, 235);
+  width: 7px;
+  height: 7px;
+  /* background: rgb(139, 13, 208); */
+  background: #0a0a90; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #cbb4d4,
+    #490db1
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #cbb4d4,
+    #3f07f8
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   border-radius: 50%;
   animation: lds-default 1.2s linear infinite;
 }
@@ -80,7 +91,7 @@
     transform: scale(1);
   }
   50% {
-    transform: scale(2);
+    transform: scale(2.1);
   }
 }
 
