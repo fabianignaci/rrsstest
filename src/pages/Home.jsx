@@ -11,7 +11,7 @@ class Home extends React.Component {
     return (
       <div>
         <Header />
-        <div className='container-fluid bg-custom-2'>
+        <div className='container-fluid bg-custom-2 mt-5'>
           <div className='container bg-white'>
             <PostList />
           </div>

@@ -23,9 +23,8 @@ class UserList extends React.Component {
 
     setTimeout(() => {
       axios
-        .get("https://n161.tech/api/dummyapi/post")
+        .get(`https://n161.tech/api/dummyapi/tag/any/post`)
         .then(res => {
-          console.log(res.data.data);
           this.setState({
             loading: false,
             error: null,
@@ -38,13 +37,13 @@ class UserList extends React.Component {
             error: e
           });
         });
-    }, 100);
+    }, 1000);
   };
 
   render() {
     if (this.state.loading) {
       return (
-        <div className='row d-flex '>
+        <div className='row'>
           <div className='col-12 loader-content'>
             <Loader />
           </div>
@@ -53,7 +52,17 @@ class UserList extends React.Component {
     }
 
     if (this.state.error) {
-      return `Error:${this.state.error.message}`;
+      return (
+        <div className='container'>
+          <div className='row'>
+            <div className='col text-center mt-5'>
+              <strong>
+                <p className='text-danger'>{`Error: ${this.state.error.message}`}</p>
+              </strong>
+            </div>
+          </div>
+        </div>
+      );
     }
 
     return (
