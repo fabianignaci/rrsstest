@@ -10,10 +10,22 @@
 
 .action-icon {
   max-width: 30px;
-  transition: 250ms;
+  transition: 350ms;
+  cursor: pointer;
 }
 
-.action-icon:hover {
-  transform: scale(1.1);
-  cursor: pointer;
+.action-icon:active {
+  transform: scale(1.5);
+}
+
+.inputComment {
+  border: 0;
+  outline: none;
+}
+
+.btn-cleansed {
+  border: 0;
+  outline: none !important;
+  background-color: transparent;
+  text-decoration: none;
 }

@@ -38,7 +38,7 @@ class UserList extends React.Component {
             error: e
           });
         });
-    }, 2000);
+    }, 100);
   };
 
   render() {
@@ -60,6 +60,7 @@ class UserList extends React.Component {
       <div className='row'>
         {this.state.data.map(post => (
           <Post
+            id={post.id}
             key={post.id}
             image={post.image}
             message={post.message}
