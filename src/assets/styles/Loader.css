@@ -8,7 +8,7 @@
   position: absolute;
   width: 6px;
   height: 6px;
-  background: #fff;
+  background: rgb(69, 152, 235);
   border-radius: 50%;
   animation: lds-default 1.2s linear infinite;
 }
@@ -80,6 +80,13 @@
     transform: scale(1);
   }
   50% {
-    transform: scale(1.5);
+    transform: scale(2);
   }
+}
+
+.loader-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 92vh;
 }

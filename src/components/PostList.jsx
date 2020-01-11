@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 
 import Post from "../components/Post";
+import Loader from "./Loader";
 
 class UserList extends React.Component {
   state = {
@@ -20,27 +21,35 @@ class UserList extends React.Component {
       error: null
     });
 
-    axios
-      .get("https://n161.tech/api/dummyapi/post")
-      .then(res => {
-        console.log(res.data.data);
-        this.setState({
-          loading: false,
-          error: null,
-          data: res.data.data
+    setTimeout(() => {
+      axios
+        .get("https://n161.tech/api/dummyapi/post")
+        .then(res => {
+          console.log(res.data.data);
+          this.setState({
+            loading: false,
+            error: null,
+            data: res.data.data
+          });
+        })
+        .catch(e => {
+          this.setState({
+            loading: false,
+            error: e
+          });
         });
-      })
-      .catch(e => {
-        this.setState({
-          loading: false,
-          error: e
-        });
-      });
+    }, 2000);
   };
 
   render() {
     if (this.state.loading) {
-      return "Loading";
+      return (
+        <div className='row d-flex '>
+          <div className='col-12 loader-content'>
+            <Loader />
+          </div>
+        </div>
+      );
     }
 
     if (this.state.error) {
