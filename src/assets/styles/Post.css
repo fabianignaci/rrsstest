@@ -1,0 +1,19 @@
+.img-post {
+  border-radius: 50%;
+  max-height: 50px;
+}
+
+.card-img-top {
+  max-height: 70vh;
+  object-fit: cover;
+}
+
+.action-icon {
+  max-width: 30px;
+  transition: 250ms;
+}
+
+.action-icon:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
