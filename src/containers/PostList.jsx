@@ -2,40 +2,39 @@ import React from "react";
 import axios from "axios";
 
 import Post from "../components/Post";
-import Loader from "./Loader";
+import Loader from "../components/Loader";
 
 class UserList extends React.Component {
   state = {
     loading: false,
     error: null,
-    data: []
+    data: [],
+    tag: this.props.tag
   };
 
   componentDidMount() {
     this.fetchData();
   }
 
-  fetchData = () => {
+  setComponentState(loading, error, data) {
     this.setState({
-      loading: true,
-      error: null
+      loading,
+      error: error || null,
+      data: data || []
     });
+  }
+
+  fetchData = () => {
+    this.setComponentState(true, null);
 
     setTimeout(() => {
       axios
-        .get(`https://n161.tech/api/dummyapi/tag/any/post`)
+        .get(`https://n161.tech/api/dummyapi/tag/${this.state.tag}/post`)
         .then(res => {
-          this.setState({
-            loading: false,
-            error: null,
-            data: res.data.data
-          });
+          this.setComponentState(false, null, res.data.data);
         })
         .catch(e => {
-          this.setState({
-            loading: false,
-            error: e
-          });
+          this.setComponentState(false, e);
         });
     }, 1000);
   };

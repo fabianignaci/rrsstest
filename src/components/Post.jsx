@@ -14,7 +14,15 @@ const Post = props => {
   const [showLikeIcon, setShowLikeIcon] = React.useState(false);
   const [postedComment, setPostedComment] = React.useState(false);
 
-  const post = props;
+  const {
+    id,
+    image,
+    message,
+    ownerFirstName,
+    ownerLastName,
+    ownerImage,
+    tags
+  } = props;
 
   const toggleLikeIcon = () => {
     if (showLikeIcon) {
@@ -44,13 +52,13 @@ const Post = props => {
     <div className='col-12 col-md-8 offset-md-2 my-3'>
       <div className='card'>
         <div className='d-flex align-items-center'>
-          <img className='my-3 mx-2 img-post' src={post.ownerImage} alt='' />
+          <img className='my-3 mx-2 img-post' src={ownerImage} alt='' />
           <p className='my-auto'>
-            {post.ownerFirstName} {post.ownerLastName}
+            {ownerFirstName} {ownerLastName}
           </p>
         </div>
         <div className='card-img-content'>
-          <img src={post.image} className='card-img-top' alt='...' />
+          <img src={image} className='card-img-top' alt='...' />
         </div>
         <div className='card-body'>
           <div className='mb-4'>
@@ -71,7 +79,7 @@ const Post = props => {
 
                 if (!visibleInputComment) {
                   setTimeout(() => {
-                    document.getElementById(post.id).focus();
+                    document.getElementById(id).focus();
                   }, 0);
                 }
               }}
@@ -95,10 +103,10 @@ const Post = props => {
             </div>
           </div>
           <div>
-            <p className='card-text'>{post.message}</p>
+            <p className='card-text'>{message}</p>
           </div>
           <div className='d-flex justify-content-start mt-4'>
-            {post.tags.map(tag => (
+            {tags.map(tag => (
               <span key={tag} className='badge badge-info mr-1'>
                 {tag}
               </span>
@@ -109,7 +117,7 @@ const Post = props => {
           {visibleInputComment && (
             <div>
               <input
-                id={post.id}
+                id={id}
                 className='inputComment col-12'
                 placeholder='Add comment...'
                 type='text'
