@@ -37,7 +37,7 @@ class Home extends React.Component {
 
     setTimeout(() => {
       axios
-        .get(`https://n161.tech/api/dummyapi/tag/${tag}/post`)
+        .get(`https://n161.tech/api/dummyapi/tag/${tag || this.state.tag}/post`)
         .then(res => {
           this.setComponentState(false, null, res.data.data);
         })
@@ -48,18 +48,13 @@ class Home extends React.Component {
   };
 
   render() {
-    // if (this.state.loading) {
-    //   return <Loader />;
-    // }
-
-    // if (this.state.error) {
-    //   return <Error message={this.state.error.message} />;
-    // }
     return (
       <>
         <Header handleSearchTag={this.handleSearchTag} />
         {this.state.loading && <Loader />}
-        {this.state.error && <Error message={this.state.error.message} />}
+        {this.state.error && (
+          <Error message='Ocurrio un error al cargar los datos' />
+        )}
         <div className='container-fluid bg-custom-2 mt-5'>
           <div className='container bg-white'>
             <PostList data={this.state.data} />
