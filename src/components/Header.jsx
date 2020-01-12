@@ -6,6 +6,10 @@ import instaLogo from "../assets/static/insta-logo.png";
 import "../assets/styles/Header.css";
 
 const Header = props => {
+  const handleSearchTag = e => {
+    return props.handleSearchTag(e.target.value);
+  };
+
   return (
     <nav className='navbar container-fluid navbar-light bg-light fixed-top down-line'>
       <div className='container justify-content-center'>
@@ -25,6 +29,7 @@ const Header = props => {
                 type='search'
                 placeholder='Search by tag'
                 aria-label='Search'
+                onChange={handleSearchTag}
               />
             </form>
           </div>
