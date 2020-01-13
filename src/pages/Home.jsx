@@ -54,9 +54,11 @@ class Home extends React.Component {
       <>
         <Header handleSearchTag={this.handleSearchTag} />
         {this.state.loading && <Loader />}
-        {!this.state.data.length && !this.state.loading && (
-          <Error styles='text-info h5' message='Tag not found' />
-        )}
+        {!this.state.data.length &&
+          !this.state.loading &&
+          !this.state.error && (
+            <Error styles='text-info h5' message='Tag not found' />
+          )}
         {this.state.error && (
           <Error
             styles='text-danger h5'
