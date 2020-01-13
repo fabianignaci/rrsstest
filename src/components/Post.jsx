@@ -105,7 +105,7 @@ const Post = props => {
           <div>
             <p className='card-text'>{message}</p>
           </div>
-          <div className='d-flex justify-content-start mt-4'>
+          <div className='mt-3'>
             {tags.map(tag => (
               <span key={tag} className='badge badge-info mr-1'>
                 {tag}
