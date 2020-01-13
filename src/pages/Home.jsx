@@ -14,7 +14,8 @@ class Home extends React.Component {
     this.state = {
       loading: false,
       error: null,
-      data: []
+      data: [],
+      tag: "common"
     };
   }
 
@@ -22,8 +23,11 @@ class Home extends React.Component {
     this.fetchData();
   }
 
-  handleSearchTag = e => {
-    this.fetchData(e.toLowerCase());
+  handleSearchTag = tag => {
+    this.setState({
+      tag: tag.toLowerCase()
+    });
+    this.fetchData();
   };
 
   setComponentState(loading, error, data) {
@@ -34,12 +38,15 @@ class Home extends React.Component {
     });
   }
 
-  fetchData = tag => {
+  fetchData = () => {
     this.setComponentState(true, null);
 
     setTimeout(() => {
       axios
-        .get(`https://n161.tech/api/dummyapi/tag/${tag || "common"}/post`)
+        .get(
+          `https://n161.tech/api/dummyapi/tag/${this.state.tag ||
+            "common"}/post`
+        )
         .then(res => {
           this.setComponentState(false, null, res.data.data);
         })
@@ -54,17 +61,20 @@ class Home extends React.Component {
       <>
         <Header handleSearchTag={this.handleSearchTag} />
         {this.state.loading && <Loader />}
+
         {!this.state.data.length &&
           !this.state.loading &&
           !this.state.error && (
             <Error styles='text-info h5' message='Tag not found' />
           )}
+
         {this.state.error && (
           <Error
             styles='text-danger h5'
             message='An error occurred on loading the feed'
           />
         )}
+
         <div className='container-fluid bg-custom-2 mt-5'>
           <div className='container bg-white'>
             <PostList data={this.state.data} />
