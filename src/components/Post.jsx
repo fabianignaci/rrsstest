@@ -49,7 +49,7 @@ const Post = props => {
   };
 
   return (
-    <div className='col-12 col-md-8 offset-md-2 my-3'>
+    <div className='col-12 col-md-8 offset-md-2 my-3 animated fadeIn slow'>
       <div className='card'>
         <div className='d-flex align-items-center'>
           <img className='my-3 mx-2 img-post' src={ownerImage} alt='' />

@@ -7,7 +7,9 @@ import "../assets/styles/Header.css";
 
 const Header = props => {
   const handleSearchTag = e => {
-    return props.handleSearchTag(e.target.value);
+    if (e.target.value === "" && e.keyCode !== 8)
+      return props.handleSearchTag(e.target.value);
+    if (e.key === "Enter") return props.handleSearchTag(e.target.value);
   };
 
   return (
@@ -29,6 +31,7 @@ const Header = props => {
                 type='search'
                 placeholder='Search by tag'
                 aria-label='Search'
+                onKeyUp={handleSearchTag}
                 onChange={handleSearchTag}
               />
             </form>
