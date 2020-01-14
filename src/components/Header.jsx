@@ -7,9 +7,10 @@ import "../assets/styles/Header.css";
 
 const Header = props => {
   const handleSearchTag = e => {
-    if (e.target.value === "" && e.keyCode !== 8)
+    if (e.target.value === "" && e.keyCode !== 8 && e.key !== "Enter")
       return props.handleSearchTag(e.target.value);
-    if (e.key === "Enter") return props.handleSearchTag(e.target.value);
+    if (e.key === "Enter" && e.target.value !== "" && e.keyCode !== 8)
+      return props.handleSearchTag(e.target.value);
   };
 
   return (

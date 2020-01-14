@@ -2,6 +2,8 @@ import React from "react";
 
 //Assets
 import "../assets/styles/Post.css";
+
+//Statis assets
 import likeIcon from "../assets/static/like-icon.png";
 import likeIconRed from "../assets/static/like-icon2.png";
 import commentIcon from "../assets/static/comment-icon.png";

@@ -1,10 +1,12 @@
 import React from "react";
 import axios from "axios";
-//import { Link } from "react-router-dom";
+
+//Components
 import Header from "../components/Header";
-import PostList from "../containers/PostList";
+import PostList from "../components/PostList";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
+
 //assets
 import "../assets/styles/Home.css";
 
@@ -14,8 +16,7 @@ class Home extends React.Component {
     this.state = {
       loading: false,
       error: null,
-      data: [],
-      tag: "common"
+      data: []
     };
   }
 
@@ -24,10 +25,7 @@ class Home extends React.Component {
   }
 
   handleSearchTag = tag => {
-    this.setState({
-      tag: tag.toLowerCase()
-    });
-    this.fetchData();
+    this.fetchData(tag);
   };
 
   setComponentState(loading, error, data) {
@@ -38,22 +36,16 @@ class Home extends React.Component {
     });
   }
 
-  fetchData = () => {
+  fetchData = tag => {
     this.setComponentState(true, null);
-
-    setTimeout(() => {
-      axios
-        .get(
-          `https://n161.tech/api/dummyapi/tag/${this.state.tag ||
-            "common"}/post`
-        )
-        .then(res => {
-          this.setComponentState(false, null, res.data.data);
-        })
-        .catch(e => {
-          this.setComponentState(false, e);
-        });
-    }, 500);
+    axios
+      .get(`https://n161.tech/api/dummyapi/tag/${tag || "common"}/post`)
+      .then(res => {
+        this.setComponentState(false, null, res.data.data);
+      })
+      .catch(e => {
+        this.setComponentState(false, e);
+      });
   };
 
   render() {
