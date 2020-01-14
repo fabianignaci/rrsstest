@@ -25,31 +25,47 @@ En caso de problemas con axios o react-router-dom:
 `$ npm run build` `$ yarn build` para pasar a producción.
 
 ## Estructura del proyecto
++ /assets
+	+ /static
+		- comment-icon.png
+		- facebook-icon.png
+		- insta-logo.png
+		- like-icon.png 
+		- like-icon2
+		- ok-comment-icon.png
+		- share-icon.png
+	+ /styles
+		- Header.css
+		- Home.css
+		- Loader.css
+		- Post.css
++ /components
+	+ Error.jsx
+	+ Header.jsx
+	+ Loader.jsx
+	+ Post.jsx
+	+ PostList.jsx
 
-- /assets + /static - comment-icon.png - facebook-icon.png - insta-logo.png - like-icon.png - like-icon2 - ok-comment-icon.png - share-icon.png + /styles - Header.css - Home.css - Loader.css - Post.css
-- /components + Error.jsx + Header.jsx + Loader.jsx + Post.jsx + PostList.jsx
++ /containers
+	+ Home.jsx
 
-- /containers + Home.jsx
++ /routes
+	+ App.js
 
-- /routes + App.js
-
-- index.js
++ index.js
 
 ## Funcionamiento del sistema
 
 ### Containers
-
 **Home**: Es un componente de Clase que actúa como página principal de la aplicación la cual se encarga de realizar la llamada GET al fake API por medio de Axios.
 
 Llama al los siguientes componentes:
-
 - Error: Se utiliza para mostrar mensajes de error.
 - Header: Se utiliza para recibir el tag por medio de una función que es pasada por props.
 - PostList: Se utiliza para hacer un .map por cada Object y enviar las props a **Post** para que las muestre en una Card.
 - Loader: Se utiliza para mostrar momentos de carga.
 
 **Código**:
-
 ```javascript
 class Home extends React.Component {
   constructor(props) {
@@ -134,7 +150,6 @@ class Home extends React.Component {
 **Error** : Componente funcional que recibe "message" y "styles" por props
 
 **Código**:
-
 ```javascript
 const Error = props => {
   let styles = props.styles;
@@ -154,11 +169,9 @@ const Error = props => {
   );
 };
 ```
-
 **Header**: Componente funcional que recibe como prop una función que envía el value del input para buscar un tag. Los eventos onChange y onKeyUp del input llaman a la función. Se hace validación antes de enviar el tag.
 
 **Código**:
-
 ```javascript
 const Header = props => {
   const handleSearchTag = e => {
@@ -196,13 +209,11 @@ const Header = props => {
       </div>
     </nav>
   );
-};
+}
 ```
-
 **Loader**: Componente funcional que muestra un loader de carga.
 
 **Código**:
-
 ```javascript
 const Loader = () => (
   <div className='row'>
@@ -225,11 +236,9 @@ const Loader = () => (
   </div>
 );}
 ```
-
 **PostList**: Componente funcional que recibe en sus props la data listada por tag desde Home para ser enviada al componente **Post**.
 
 **Código**:
-
 ```javascript
 const PostList = props => {
   return (
@@ -256,7 +265,6 @@ const PostList = props => {
 Para la interacción con los botones se usaron hooks para controlar el estado de input para comentarios, icono de like e icono de comentarios.
 
 **Código**:
-
 ```javascript
 const Post = props => {
   const [visibleInputComment, setVisibleInputComment] = React.useState(false);
@@ -380,6 +388,7 @@ const Post = props => {
   );
 };
 ```
+
 
 ## Librerías usadas
 
