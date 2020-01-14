@@ -39,7 +39,7 @@ class Home extends React.Component {
   fetchData = tag => {
     this.setComponentState(true, null);
     axios
-      .get(`https://n161.tech/api/dummyapi/tag/${tag || "common"}/post`)
+      .get(`https://n161.tech/api/dummyapi/tag/${tag || "any"}/post`)
       .then(res => {
         this.setComponentState(false, null, res.data.data);
       })
@@ -54,11 +54,20 @@ class Home extends React.Component {
         <Header handleSearchTag={this.handleSearchTag} />
         {this.state.loading && <Loader />}
 
-        {!this.state.data.length &&
-          !this.state.loading &&
-          !this.state.error && (
-            <Error styles='text-info h5' message='Tag not found' />
-          )}
+        {!this.state.data.length && !this.state.loading && !this.state.error && (
+          <Error
+            styles='text-info'
+            message='Tag not found: You can find by "any"(default),
+        "picture",
+        "text",
+        "post",
+        "interesting",
+        "read",
+        "something",
+        "tag" and
+        "common"'
+          />
+        )}
 
         {this.state.error && (
           <Error
