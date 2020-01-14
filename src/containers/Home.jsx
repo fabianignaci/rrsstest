@@ -25,6 +25,7 @@ class Home extends React.Component {
   }
 
   handleSearchTag = tag => {
+    tag = tag.toLowerCase();
     this.fetchData(tag);
   };
 
