@@ -145,7 +145,7 @@ class Home extends React.Component {
 }
 ```
 
-###Componentes:
+### Componentes:
 
 **Error** : Componente funcional que recibe "message" y "styles" por props
 
